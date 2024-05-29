@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://by6usbkw54p0d"]
+
+[ext_resource type="Script" path="res://levels/test_level/test_level.gd" id="1_gmsn8"]
+[ext_resource type="PackedScene" uid="uid://50ws8mipweoo" path="res://controller/camera_base.tscn" id="2_2igdt"]
+[ext_resource type="PackedScene" uid="uid://bvl1i3m6ale7y" path="res://levels/level_components/environment.tscn" id="3_cgej4"]
+[ext_resource type="PackedScene" uid="uid://bgccoom22iq0j" path="res://controller/units_control.tscn" id="4_xt4mu"]
+[ext_resource type="PackedScene" uid="uid://7ubpqhxlnvxl" path="res://levels/level_components/actors.tscn" id="5_nfr4b"]
+
+[node name="test_level" type="Node3D"]
+script = ExtResource("1_gmsn8")
+
+[node name="CameraBase" parent="." instance=ExtResource("2_2igdt")]
+
+[node name="Environment" parent="." instance=ExtResource("3_cgej4")]
+
+[node name="UnitsControl" parent="." instance=ExtResource("4_xt4mu")]
+
+[node name="Actors" parent="." instance=ExtResource("5_nfr4b")]

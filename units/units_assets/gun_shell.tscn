@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqkagvogq0l1r"]
+
+[ext_resource type="Script" path="res://Scenes/gun_shell.gd" id="1_4a04k"]
+[ext_resource type="PackedScene" path="res://Scenes/explosion.tscn" id="2_57ixj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxo4i"]
+albedo_color = Color(0.580392, 0.686275, 0.690196, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wt1fu"]
+material = SubResource("StandardMaterial3D_kxo4i")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cfyob"]
+
+[node name="GunShell" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_4a04k")
+EXPLOSION = ExtResource("2_57ixj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_wt1fu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_cfyob")

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3eytqtccq0y3"
+path="res://.godot/imported/tank_turret.obj-b4340265dbbcb6bfc0326ac02ba6af61.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tank_turret.obj-b4340265dbbcb6bfc0326ac02ba6af61.mesh"]
+
+source_file="res://units/tank/tank_turret.obj"
+dest_files=["res://.godot/imported/tank_turret.obj-b4340265dbbcb6bfc0326ac02ba6af61.mesh", "res://.godot/imported/tank_turret.obj-b4340265dbbcb6bfc0326ac02ba6af61.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ubpqhxlnvxl"]
+
+[ext_resource type="Script" path="res://Levels/level_components/Actors.gd" id="1_0pyii"]
+
+[node name="Actors" type="Node3D"]
+script = ExtResource("1_0pyii")
+SHINE_FACTOR = 0.93

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl5dd1ep5aybv"]
+
+[ext_resource type="Texture2D" uid="uid://bwcs11x3krwxc" path="res://units/units_assets/selected.png" id="1_jmhyc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a145k"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_jmhyc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vjcui"]
+material = SubResource("StandardMaterial3D_a145k")
+
+[node name="Selected" type="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0.02, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.43, 0, 0, 0, -1.4993e-07, 3.43, 0, -3.43, -1.4993e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_vjcui")

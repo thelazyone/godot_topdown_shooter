@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://5s3rcge75d24"]
+
+[ext_resource type="Script" path="res://units/units_components/move_component.gd" id="1_pnupw"]
+
+[node name="MoveComponent" type="Node3D"]
+script = ExtResource("1_pnupw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 2.0

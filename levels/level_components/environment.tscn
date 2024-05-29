@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvl1i3m6ale7y"]
+
+[ext_resource type="PackedScene" uid="uid://lfio3y5xh11s" path="res://levels/level_assets/cube_obstacle.tscn" id="1_g5vgk"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ojloa"]
+vertices = PackedVector3Array(-19.5, 0.489804, -0.25, -1.25, 0.489804, -0.25, -1, 0.489804, -1, -1, 0.489804, -1, 0.25, 0.489804, -1.25, 0.25, 0.489804, -19.5, -19.5, 0.489804, -19.5, -19.5, 0.489804, -0.25, 0.25, 0.489804, -19.5, 0.25, 0.489804, -1.25, 1, 0.489804, -1, 1, 0.489804, -1, 1.25, 0.489804, 0.25, 19.5, 0.489804, 0.25, 19.5, 0.489804, -19.5, 0.25, 0.489804, -19.5, 0.25, 0.489804, 19.5, 0.25, 0.489804, 1.25, -1, 0.489804, 1, -19.5, 0.489804, -0.25, -19.5, 0.489804, 19.5, -1, 0.489804, 1, -1.25, 0.489804, -0.25, -19.5, 0.489804, -0.25, 1, 0.489804, 1.25, 0.25, 0.489804, 1.25, 0.25, 0.489804, 19.5, 19.5, 0.489804, 0.25, 1.25, 0.489804, 0.25, 1, 0.489804, 1.25, 0.25, 0.489804, 19.5, 19.5, 0.489804, 19.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(14, 11, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 20), PackedInt32Array(18, 20, 19), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30)]
+agent_height = 1.0
+agent_radius = 0.3
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_twrfu"]
+
+[node name="Environment" type="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018405, 0, -0.0933971)
+navigation_mesh = SubResource("NavigationMesh_ojloa")
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_twrfu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8649, 0)
+light_energy = 15.4
+light_indirect_energy = 1.457
+light_volumetric_fog_energy = 2.676
+light_specular = 8.424
+omni_range = 23.7319
+
+[node name="CubeObstacle" parent="." instance=ExtResource("1_g5vgk")]
+
+[node name="CubeObstacle2" parent="." instance=ExtResource("1_g5vgk")]
+transform = Transform3D(0.500039, 0.0238379, 0.865676, 0.00872619, 0.999432, -0.0325617, -0.86596, 0.0238361, 0.499547, -8.69261, 0.425923, -1.51708)
+
+[node name="CubeObstacle3" parent="." instance=ExtResource("1_g5vgk")]
+transform = Transform3D(0.000208706, 0.0412818, 0.999149, 0.0238379, 0.998864, -0.041275, -0.999717, 0.0238262, -0.000776172, 2.96969, 0.536892, 3.70348)
+
+[node name="CubeObstacle4" parent="." instance=ExtResource("1_g5vgk")]
+transform = Transform3D(-0.499394, 0.0563786, 0.864541, 0.0412818, 0.998297, -0.0412552, -0.865392, 0.0150871, -0.50087, 4.49503, 0.240075, -5.52866)
