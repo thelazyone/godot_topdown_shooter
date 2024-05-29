@@ -1,4 +1,4 @@
-# godot_topdown_shooter
+# A top-down shooter in Godot
 In this stage I'm mainly experimenting with Godot, restarting from [the previous playground](https://github.com/thelazyone/godot_rts) test with a slightly different scope.
 
 ## Main Goals
