@@ -10,8 +10,9 @@ func _ready():
 
 func _physics_process(delta):
 	# Previously using move_and_slide, but sliding looks very weird on tracked vehicles
-	move_and_collide(velocity * delta)
-
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		velocity = Vector3(0, 0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
