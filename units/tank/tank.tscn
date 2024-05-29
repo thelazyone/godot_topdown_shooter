@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgn8ry1b1ul4g"]
+[gd_scene load_steps=8 format=3 uid="uid://c8av1vq43x38q"]
 
 [ext_resource type="PackedScene" uid="uid://5s3rcge75d24" path="res://units/units_components/move_component.tscn" id="1_f01bk"]
 [ext_resource type="Script" path="res://units/tank/tank.gd" id="1_k1v7e"]
 [ext_resource type="PackedScene" uid="uid://dl5dd1ep5aybv" path="res://units/units_assets/selected_sprite.tscn" id="2_chcjp"]
-[ext_resource type="ArrayMesh" uid="uid://dhww5o4at5l52" path="res://units/tank/tank_body.obj" id="3_1r87h"]
-[ext_resource type="ArrayMesh" uid="uid://d3eytqtccq0y3" path="res://units/tank/tank_turret.obj" id="4_25ldr"]
+[ext_resource type="ArrayMesh" uid="uid://c5b7f7q4irfiw" path="res://units/tank/tank_body.obj" id="3_1r87h"]
+[ext_resource type="ArrayMesh" uid="uid://bljkavj7wwr2s" path="res://units/tank/tank_turret.obj" id="4_25ldr"]
 [ext_resource type="PackedScene" uid="uid://t4mkrwhanp2b" path="res://units/units_components/combat_component.tscn" id="5_3fffy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vaieb"]

@@ -20,12 +20,6 @@ func _ready():
 	m_UnitsControlNode.area_selected.connect(select_actors)
 	m_UnitsControlNode.aim_order.connect(aim_to)
 	
-	# Building Units orders
-	m_UnitsControlNode.build_worker_order.connect(add_worker)
-	m_UnitsControlNode.build_tank_order.connect(add_tank)
-	m_UnitsControlNode.build_factory_order.connect(build_factory)
-	m_UnitsControlNode.build_plant_order.connect(build_plant)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -87,74 +81,10 @@ func shoot_area(coordinate):
 				child.combat_stop()
 
 
-# Build Units commands
-func add_worker(coordinate):
-	pass
-	#var new_worker = preload("res://Scenes/worker.tscn").instantiate()
-	#new_worker.position = Geometry.plane_to_space(m_Camera.coords_on_xz(coordinate))
-	#adjust_materials(new_worker, 0.0)
-	#add_child(new_worker)
-
-
 func add_tank(coordinate): # Clearly temp:
 	var new_tank = get_node("tank").instantiate()
 	new_tank.position = Geometry.plane_to_space(m_Camera.coords_on_xz(coordinate))
-	adjust_materials(new_tank, 0.25)
 	add_child(new_tank)
-
-
-# Build Buildings commands
-func build_factory(coordinate): 
-	pass
-	#var new_fact = preload("res://Scenes/factory.tscn").instantiate()
-	#new_fact.position = Geometry.plane_to_space(m_Camera.coords_on_xz(coordinate))
-	#adjust_materials(new_fact, 0.)
-	#add_child(new_fact)
-
-
-func build_plant(coordinate): 
-	pass
-	#var new_plant = preload("res://Scenes/plant.tscn").instantiate()
-	#new_plant.position = Geometry.plane_to_space(m_Camera.coords_on_xz(coordinate))
-	#adjust_materials(new_plant, 0.)
-	#add_child(new_plant)
-
-
-# Shine Material adjustment. It should NOT be here. TODO.
-# Shine Factor
-@export var SHINE_FACTOR = 0.6
-
-# Sets the general reflection of the meshes of the created actors. 
-# Might benefit being in a separate object. For now let's keep it here.
-func adjust_materials(node, lightness_factor : float = 0.0):
-
-	var desired_roughness = 1. - SHINE_FACTOR
-	var desired_specular = 0.
-
-	if node is MeshInstance3D and node.get_active_material(0) is StandardMaterial3D:
-		var material = node.get_active_material(0) as StandardMaterial3D
-		print("Setting roughness to", desired_roughness)
-		material.roughness = desired_roughness
-		material.specular = desired_specular
-				#material.albedo_color = Color(1,1,1,1)
-		if lightness_factor>0.1 :
-			print("Increasing emission to ", lightness_factor, "for ", node)
-			material.emission_enabled = true
-			material.emission = Color(lightness_factor,lightness_factor,lightness_factor,1)
-			
-	elif node is MeshInstance3D:
-		var mesh = node.mesh
-		if mesh:
-			for i in range(mesh.get_surface_count()):
-				var material = mesh.surface_get_material(i)
-				if material and material is StandardMaterial3D:
-					material.roughness = desired_roughness
-					material.specular = desired_specular
-				
-	# Recursively adjust materials for all children of the current node
-	for child in node.get_children():
-		adjust_materials(child, lightness_factor)
-
 
 
 
