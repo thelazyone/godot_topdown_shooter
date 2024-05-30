@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dr8p160sxmysa"]
 
-[ext_resource type="Script" path="res://units/tank/WASDComponent.gd" id="1_k3afa"]
+[ext_resource type="Script" path="res://units/units_components/wasd_component.gd" id="1_7lugv"]
 
 [node name="WASDComponent" type="Node3D"]
-script = ExtResource("1_k3afa")
+script = ExtResource("1_7lugv")

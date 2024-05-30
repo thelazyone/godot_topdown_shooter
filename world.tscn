@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl2kxwojbmqcv"]
+[gd_scene load_steps=3 format=3 uid="uid://bl2kxwojbmqcv"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_88v0v"]
+[ext_resource type="PackedScene" uid="uid://50ws8mipweoo" path="res://controller/camera_base.tscn" id="2_a3pic"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_88v0v")
+
+[node name="CameraBase" parent="." instance=ExtResource("2_a3pic")]
+unique_name_in_owner = true

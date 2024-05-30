@@ -5,8 +5,10 @@ var is_selected = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	
+	# Connecting the mouse shoot component to the Turret and setting its position
+	get_node("MouseShootComponent").aim_order.connect(get_node("Turret/TurretComponent").aim_to)
+	
 
 func _physics_process(delta):
 	# Previously using move_and_slide, but sliding looks very weird on tracked vehicles
@@ -16,8 +18,6 @@ func _physics_process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
-	# TANK-Specific functions, like rotating the turret
-	get_node("Turret").rotation = Vector3(0, get_node("CombatComponent").turret_direction - rotation.y, 0)
 	pass
 
 func command_move(target):

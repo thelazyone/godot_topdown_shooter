@@ -68,7 +68,6 @@ func _input(event):
 				isDragging = false
 		mousePos = event.position
 		aim_order.emit(mousePos)
-		draw_area(isDragging)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

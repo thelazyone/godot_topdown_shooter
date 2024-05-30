@@ -4,3 +4,9 @@
 
 [node name="CombatComponent" type="Node3D"]
 script = ExtResource("1_xv2c6")
+HIT_DAMAGE = null
+HIT_DEVIATION = null
+ATTACK_PERIOD = null
+MAX_SHOOT_ANGLE = null
+HAS_TURRET = null
+ROT_SPEED = null
