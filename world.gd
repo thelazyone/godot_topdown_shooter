@@ -12,8 +12,7 @@ func _ready():
 	# Loading level:
 	var level = preload("res://levels/test_level/test_level.tscn").instantiate()
 	add_child(level)
-	var tank_node = preload("res://units/tank/tank.tscn").instantiate()
-	add_child(tank_node)
+	
 	# Connecting Buttons to Actors spawner
 	pass
 

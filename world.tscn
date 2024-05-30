@@ -8,7 +8,5 @@
 script = ExtResource("1_88v0v")
 
 [node name="CameraBase" parent="." instance=ExtResource("2_a3pic")]
-unique_name_in_owner = true
 
 [node name="Actors" parent="." instance=ExtResource("3_g02d5")]
-unique_name_in_owner = true

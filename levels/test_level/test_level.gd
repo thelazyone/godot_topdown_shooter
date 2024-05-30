@@ -8,10 +8,10 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	print("testing node")
 	var tank_node = preload("res://units/tank/tank.tscn").instantiate()
-	print("tank node loaded: ", tank_node)
-	
+	add_child(tank_node)
+	get_node("/root/World/CameraBase").set_follow(tank_node)
+		
 	# Connecting Buttons to Actors spawner
 	pass
 
