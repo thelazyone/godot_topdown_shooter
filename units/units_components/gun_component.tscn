@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b267p0cbyaby2"]
+
+[ext_resource type="Script" path="res://units/units_components/gun_component.gd" id="1_fxdp7"]
+
+[node name="GunComponent" type="Node3D"]
+script = ExtResource("1_fxdp7")

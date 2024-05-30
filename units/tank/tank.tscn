@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8av1vq43x38q"]
+[gd_scene load_steps=10 format=3 uid="uid://c8av1vq43x38q"]
 
 [ext_resource type="Script" path="res://units/tank/tank.gd" id="1_k1v7e"]
 [ext_resource type="ArrayMesh" uid="uid://c5b7f7q4irfiw" path="res://units/tank/tank_body.obj" id="3_1r87h"]
 [ext_resource type="PackedScene" uid="uid://d11vmruo6mjv1" path="res://units/units_components/turret_component.tscn" id="4_3relp"]
 [ext_resource type="ArrayMesh" uid="uid://bljkavj7wwr2s" path="res://units/tank/tank_turret.obj" id="4_25ldr"]
 [ext_resource type="PackedScene" uid="uid://dr8p160sxmysa" path="res://units/units_components/wasd_component.tscn" id="5_mrkqn"]
+[ext_resource type="PackedScene" uid="uid://b267p0cbyaby2" path="res://units/units_components/gun_component.tscn" id="5_q0ual"]
 [ext_resource type="PackedScene" uid="uid://dcpbumipk4j0n" path="res://units/units_components/mouse_shoot_component.tscn" id="6_bf8cm"]
+[ext_resource type="PackedScene" uid="uid://bqkagvogq0l1r" path="res://units/units_assets/gun_shell.tscn" id="6_q3ike"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vaieb"]
 
@@ -38,7 +40,9 @@ mesh = ExtResource("4_25ldr")
 skeleton = NodePath("")
 
 [node name="TurretComponent" parent="Turret" instance=ExtResource("4_3relp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223838, -0.564484, 0)
+
+[node name="GunComponent" parent="Turret" instance=ExtResource("5_q0ual")]
+PROJECTILE = ExtResource("6_q3ike")
 
 [node name="WASDComponent" parent="." instance=ExtResource("5_mrkqn")]
 

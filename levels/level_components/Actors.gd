@@ -7,19 +7,19 @@ extends Node3D
 
 # Creating a reference to the other useful parts. The @onready holds the definition until the 
 # _ready function has been called and the system initialized.
-@onready var m_UnitsControlNode = get_node("../UnitsControl")
+#@onready var m_UnitsControlNode = get_node("../UnitsControl")
 @onready var m_Camera = get_node("../CameraBase")
 
 
 # Called when the node enters the scene tree for the first time.
 # TODO Note that some comands are still to be implemented.
 func _ready():
-	
-	# Active actors orders
-	m_UnitsControlNode.movement_order.connect(go_to)
-	m_UnitsControlNode.area_selected.connect(select_actors)
-	m_UnitsControlNode.aim_order.connect(aim_to)
-	
+	print("hello")
+	## Active actors orders
+	#m_UnitsControlNode.movement_order.connect(go_to)
+	#m_UnitsControlNode.area_selected.connect(select_actors)
+	#m_UnitsControlNode.aim_order.connect(aim_to)
+	pass	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -79,7 +79,6 @@ func shoot_area(coordinate):
 				child.combat_attack_area(m_Camera.coords_on_xz(coordinate))
 			else:
 				child.combat_stop()
-
 
 func add_tank(coordinate): # Clearly temp:
 	var new_tank = get_node("tank").instantiate()

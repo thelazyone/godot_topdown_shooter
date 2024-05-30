@@ -6,6 +6,7 @@
 
 [node name="CubeObstacle" type="MeshInstance3D"]
 transform = Transform3D(0.866026, 0.0087262, 0.499924, 0, 0.999848, -0.0174524, -0.5, 0.0151142, 0.865894, 0, 0.5, 0)
+layers = 512
 mesh = SubResource("BoxMesh_mbfrx")
 skeleton = NodePath("../Plane")
 

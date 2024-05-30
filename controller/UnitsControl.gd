@@ -58,68 +58,69 @@ func _ready():
 	
 func _input(event):
 	
-	# Drawing area if the mouse is dragging.
-	if event is InputEventMouse:
-		
-		# Before calculating the drag, checking if the mouse is down.
-		# This ensures that if the correct state flow is lost the rect is not shown.
-		if event is InputEventMouseMotion:
-			if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-				isDragging = false
-		mousePos = event.position
-		aim_order.emit(mousePos)
-
+	## Drawing area if the mouse is dragging.
+	#if event is InputEventMouse:
+		#
+		## Before calculating the drag, checking if the mouse is down.
+		## This ensures that if the correct state flow is lost the rect is not shown.
+		#if event is InputEventMouseMotion:
+			#if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				#isDragging = false
+		#mousePos = event.position
+		#aim_order.emit(mousePos)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	# If click, there might be a command sent.
-	if Input.is_action_just_pressed("LeftClick"):
 		
-		# If no command is issued, behave with drag
-		if command == ImpendingCommand.None:
-			rectStart = mousePos
-			isDragging = true
-		
-		# Otherwise, send the command to the Actors element to build the new things,
-		# Then send the command.
-		else:
-			
-			# Sending a signal, which the Actors object should receive.
-			match command:
-					ImpendingCommand.BuildTank:
-						build_tank_order.emit(mousePos)
-						pass
-					ImpendingCommand.BuildWorker:
-						build_worker_order.emit(mousePos)
-						pass
-					ImpendingCommand.BuildFactory:
-						build_factory_order.emit(mousePos)
-						pass
-					ImpendingCommand.BuildPlant:
-						build_plant_order.emit(mousePos)
-						pass
-						
-			# Finally setting the order back to none
-			command = ImpendingCommand.None			
-	
-	# If the click has been released it could be the end of a dragging!
-	if Input.is_action_just_released("LeftClick") and command == ImpendingCommand.None:
-		if isDragging:
-			var rectangle = get_node("./Rect")
-			
-			# The coordinates of the rect are sent, so the game knows which area has been selected.
-			area_selected.emit(
-				Vector2(min(rectStart.x, mousePos.x), min(rectStart.y, mousePos.y)),
-				Vector2(max(rectStart.x, mousePos.x), max(rectStart.y, mousePos.y)))
-			isDragging = false
-		
-	# Right Click is a movement order, and a cancelling order for impending commands.
-	if Input.is_action_just_pressed("RightClick"):
-		movement_order.emit(get_viewport().get_mouse_position())
-		
-		# If a command is issued, cancelling it.
-		command = ImpendingCommand.None
+	#
+	## If click, there might be a command sent.
+	#if Input.is_action_just_pressed("LeftClick"):
+		#
+		## If no command is issued, behave with drag
+		#if command == ImpendingCommand.None:
+			#rectStart = mousePos
+			#isDragging = true
+		#
+		## Otherwise, send the command to the Actors element to build the new things,
+		## Then send the command.
+		#else:
+			#
+			## Sending a signal, which the Actors object should receive.
+			#match command:
+					#ImpendingCommand.BuildTank:
+						#build_tank_order.emit(mousePos)
+						#pass
+					#ImpendingCommand.BuildWorker:
+						#build_worker_order.emit(mousePos)
+						#pass
+					#ImpendingCommand.BuildFactory:
+						#build_factory_order.emit(mousePos)
+						#pass
+					#ImpendingCommand.BuildPlant:
+						#build_plant_order.emit(mousePos)
+						#pass
+						#
+			## Finally setting the order back to none
+			#command = ImpendingCommand.None			
+	#
+	## If the click has been released it could be the end of a dragging!
+	#if Input.is_action_just_released("LeftClick") and command == ImpendingCommand.None:
+		#if isDragging:
+			#var rectangle = get_node("./Rect")
+			#
+			## The coordinates of the rect are sent, so the game knows which area has been selected.
+			#area_selected.emit(
+				#Vector2(min(rectStart.x, mousePos.x), min(rectStart.y, mousePos.y)),
+				#Vector2(max(rectStart.x, mousePos.x), max(rectStart.y, mousePos.y)))
+			#isDragging = false
+		#
+	## Right Click is a movement order, and a cancelling order for impending commands.
+	#if Input.is_action_just_pressed("RightClick"):
+		#movement_order.emit(get_viewport().get_mouse_position())
+		#
+		## If a command is issued, cancelling it.
+		#command = ImpendingCommand.None
 	pass
 
 

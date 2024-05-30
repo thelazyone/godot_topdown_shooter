@@ -18,6 +18,11 @@ var target_position_2d = Vector2(0,0)
 # Calling aim_to, where RELATIVE coordinates are given.
 func aim_to(coordinate_2d):
 	target_position_2d = coordinate_2d
+	
+# Checking if the turret can shoot
+func is_ready():
+	return ready_to_shoot
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,7 +42,7 @@ func _process(delta):
 		turret_direction += clamp(target_direction, -TURRET_ROT_SPEED * delta, TURRET_ROT_SPEED * delta)
 		target_direction = Geometry.wrap_angle(target_direction)
 		turret_direction = Geometry.wrap_angle(turret_direction)
-		ready_to_shoot = abs(Geometry.diff_angles(target_direction, turret_direction)) < MAX_SHOOT_ANGLE
+		ready_to_shoot = abs(target_direction) < MAX_SHOOT_ANGLE
 	
 	_update_transforms()
 	

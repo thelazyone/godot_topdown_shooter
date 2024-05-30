@@ -22,7 +22,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	var camera_obj = get_node("Camera3D")
 	var camera_speed = 2

@@ -1,25 +1,25 @@
 extends CharacterBody3D
 
 
-@export var speed = 30
-@export var lifetime = 1000
-@export var start_show = 50
+@export var BULLET_SPEED = 10
+@export var LIFETIME = 5000
+@export var START_SHOW = 80
 @export var EXPLOSION: Resource
 
 
-var targetDestination = Vector2(0, 0)
 var spawn_time = Time.get_ticks_msec()
 var shell_offset = Vector2(0, 0)
 var deviation = Vector3(0,0,0)
 
 
 func set_shell_offset(i_offset):
-	position = Vector3(i_offset)
+	position += Vector3(i_offset)
 
 
 func set_target(i_position, i_target, i_deviation):
-	targetDestination = i_target
-	velocity = Vector3(speed, 0, 0).rotated(Vector3(0,1, 0), -i_position.angle_to_point(targetDestination))
+	
+	# Velocity direction is calculated on the target.
+	velocity = Vector3(BULLET_SPEED, 0, 0).rotated(Vector3(0,1, 0), -i_position.angle_to_point(i_target))
 	
 	# A box rand deviation, while not uniform, should work just fine.
 	# The correct one would use normal distributions on the 3 dimensions, but it's more expensive 
@@ -36,19 +36,21 @@ func _ready():
 
 func _physics_process(delta):
 	var elapsed = Time.get_ticks_msec() - spawn_time
-	visible = elapsed > start_show
+	visible = elapsed > START_SHOW
 	get_node("CollisionShape3D").disabled = !visible
 
 	# If hits something, it disappears
 	if get_slide_collision(0) != null:
 		var target = get_slide_collision(get_slide_collision_count() - 1)
+		print("collided with ", target)
 		explode()
 
 	# Bullet disappears after maximum range @TODO should explode?
-	if elapsed > lifetime:
+	if elapsed > LIFETIME:
 		explode()
 		
-	if position.y < 0:
+	if global_position.y < 0:
+		print("hit the ground!, position is ", global_position)
 		explode()
 		
 	velocity += deviation * delta

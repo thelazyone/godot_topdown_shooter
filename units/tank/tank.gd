@@ -8,6 +8,7 @@ func _ready():
 	
 	# Connecting the mouse shoot component to the Turret and setting its position
 	get_node("MouseShootComponent").aim_order.connect(get_node("Turret/TurretComponent").aim_to)
+	get_node("MouseShootComponent").shoot_main_order.connect(get_node("Turret/GunComponent").shoot)
 	
 
 func _physics_process(delta):
