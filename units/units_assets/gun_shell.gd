@@ -3,18 +3,13 @@ extends CharacterBody3D
 
 @export var BULLET_SPEED = 10
 @export var LIFETIME = 5000
-@export var START_SHOW = 80
+@export var START_SHOW = 5
 @export var EXPLOSION: Resource
 
 
 var spawn_time = Time.get_ticks_msec()
 var shell_offset = Vector2(0, 0)
 var deviation = Vector3(0,0,0)
-
-
-func set_shell_offset(i_offset):
-	position += Vector3(i_offset)
-
 
 func set_target(i_position, i_target, i_deviation):
 	

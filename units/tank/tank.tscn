@@ -42,6 +42,7 @@ skeleton = NodePath("")
 [node name="TurretComponent" parent="Turret" instance=ExtResource("4_3relp")]
 
 [node name="GunComponent" parent="Turret" instance=ExtResource("5_q0ual")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12777, 0.098838, 0)
 PROJECTILE = ExtResource("6_q3ike")
 
 [node name="WASDComponent" parent="." instance=ExtResource("5_mrkqn")]

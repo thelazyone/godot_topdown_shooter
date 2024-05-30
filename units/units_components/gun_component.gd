@@ -27,9 +27,6 @@ func shoot(target):
 		print ("setting bullet position to ", new_projectile.position)
 		new_projectile.set_target(Vector2(0,0), target, HIT_DEVIATION)
 		
-		# TODO Might be useful or not, who knows.haha
-		#new_projectile.set_shell_offset(-get_node("../Turret").position) 
-		
 		get_node("/root/World/Actors").add_child(new_projectile)
 		
 		# Updating the shoot time for the cooldown
