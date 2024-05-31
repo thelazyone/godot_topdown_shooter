@@ -12,10 +12,13 @@ func _ready():
 	
 
 func _physics_process(delta):
-	# Previously using move_and_slide, but sliding looks very weird on tracked vehicles
+	
+	# Previously using move_and_slide, but sliding looks very weird on wheeled vehicles
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		velocity = Vector3(0, 0, 0)
+		# First bounce, then push the target a bit
+		velocity += velocity.bounce(collision.get_normal()) * collision.get_collider().mass
+		collision.get_collider().apply_impulse(-collision.get_normal() * collision.get_collider().mass)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	

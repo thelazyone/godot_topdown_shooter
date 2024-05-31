@@ -26,7 +26,8 @@ func _ready():
 func _process(delta):
 	
 	# Reading the speed from the real world.
-	speed = sign(speed) * get_parent().velocity.length()
+	speed = Geometry.space_to_plane(get_parent().velocity).dot(Vector2(cos(plane_direction), sin(plane_direction)))
+	#speed = sign(speed) * Geometry.space_to_plane(get_parent().velocity).length()
 	
 	# First checking the controls:
 	if Input.is_action_pressed("forward"):
@@ -50,15 +51,19 @@ func _process(delta):
 	
 	# Applying a wheel reverting to straight
 	wheels_angle = sign(wheels_angle) * max(0, abs(wheels_angle) - steer_restore * delta)
-	
-	# Updating position and direction based on this.
 	plane_direction += speed * wheels_angle * delta
-	get_parent().velocity.x = speed * cos(plane_direction)
-	get_parent().velocity.z = speed * sin(plane_direction)
-	
+
+	# Updating the parent information.
+	_update_velocity()
 	_update_transforms()
 		
 	pass
+	
+func _update_velocity():
+		# Updating position and direction based on this.
+	get_parent().velocity.x = speed * cos(plane_direction)
+	get_parent().velocity.z = speed * sin(plane_direction)
+	get_parent().velocity.y = 0 # For now, working on a 2D plane!
 	
 func _update_transforms():
 	get_parent().rotation = Vector3(0, -plane_direction, 0)

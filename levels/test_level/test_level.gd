@@ -3,7 +3,15 @@
 
 extends Node3D
 
-
+func add_sphere(coords):
+	var sphere_node = preload("res://levels/level_assets/sphere_rigid.tscn").instantiate()
+	sphere_node.position = coords
+	add_child(sphere_node)
+	
+func add_cube(coords):
+	var cube_node = preload("res://levels/level_assets/cube_rigid.tscn").instantiate()
+	cube_node.position = coords
+	add_child(cube_node)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +19,19 @@ func _ready():
 	var tank_node = preload("res://units/tank/tank.tscn").instantiate()
 	add_child(tank_node)
 	get_node("/root/World/CameraBase").set_follow(tank_node)
+	
+	# Adding spheres around
+	add_sphere(Vector3(5,0,5))
+	add_sphere(Vector3(3,0,1))
+	add_sphere(Vector3(5,0,1))
+	add_sphere(Vector3(1,0,5))
+	add_sphere(Vector3(1,0,3))
+	add_sphere(Vector3(2,0,7))
+	
+	# Adding Cubes
+	for i in range(10):
+		for j in range(10):
+			add_cube(Vector3(i*.3, 3, j*.3))
 		
 	# Connecting Buttons to Actors spawner
 	pass

@@ -71,8 +71,6 @@ func _process(_delta):
 			move(Vector3(0, 0, camera_speed_z))
 		
 	elif camera_mode == CameraMode.FollowTarget:
-		print ("tank is ", target_to_follow.position)
-		print ("mouse is ",Geometry.plane_to_space(coords_on_xz(get_viewport().get_mouse_position())))
 		position = (target_to_follow.position * (1 - MOUSE_LOOK_WEIGHT) + 
 			Geometry.plane_to_space(coords_on_xz(get_viewport().get_mouse_position())) * (MOUSE_LOOK_WEIGHT))
 

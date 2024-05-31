@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-@export var BULLET_SPEED = 40
+@export var BULLET_SPEED = 30
 @export var LIFETIME = 5000
 @export var START_SHOW = 5
 @export var EXPLOSION: Resource
@@ -10,6 +10,7 @@ extends CharacterBody3D
 var spawn_time = Time.get_ticks_msec()
 var shell_offset = Vector2(0, 0)
 var deviation = Vector3(0,0,0)
+var explosion_position = Vector3(0,0,0)
 
 func set_target(i_position, i_target, i_deviation):
 	
@@ -36,7 +37,7 @@ func _physics_process(delta):
 
 	# If hits something, it disappears
 	if get_slide_collision(0) != null:
-		var target = get_slide_collision(get_slide_collision_count() - 1)
+		explosion_position = get_slide_collision(get_slide_collision_count() - 1).get_position()
 		explode()
 
 	# Bullet disappears after maximum range @TODO should explode?
@@ -53,6 +54,9 @@ func _physics_process(delta):
 
 func explode():
 	var explosion = EXPLOSION.instantiate()
-	explosion.position = position
+	if explosion_position != Vector3(0,0,0):
+		explosion.position = explosion_position
+	else: 
+		explosion.position = position
 	get_parent().add_child(explosion)
 	queue_free()

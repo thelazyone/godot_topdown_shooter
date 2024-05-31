@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5obqrpmbl1wa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fd6tv"]
+
+[sub_resource type="GDScript" id="GDScript_gca4u"]
+script/source = "extends RigidBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	pass
+	
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xabgc"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ybcr"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="CubeScatter" type="RigidBody3D"]
+collision_layer = 7
+collision_mask = 7
+mass = 0.05
+physics_material_override = SubResource("PhysicsMaterial_fd6tv")
+gravity_scale = 0.423
+linear_damp = 0.66
+script = SubResource("GDScript_gca4u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 1.16415e-09, 0, 0, 1, -9.31323e-09, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_xabgc")
+
+[node name="CubeMesh" type="MeshInstance3D" parent="."]
+layers = 3
+mesh = SubResource("BoxMesh_6ybcr")

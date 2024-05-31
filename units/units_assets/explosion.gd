@@ -1,6 +1,6 @@
-extends RigidBody3D
+extends Area3D
 
-@export var AREA = 1
+@export var AREA = 5
 @export var DAMAGE = 20
 @export var DURATION = 100
 
@@ -13,13 +13,17 @@ func _ready():
 
 	
 func _physics_process(delta):
-	# Add the gravity.
+	
+	var targets = get_overlapping_bodies()
+	for target in targets:
+		if target is RigidBody3D:
+			print("found target")
+			var direction = (target.global_position - global_position).normalized()
+			var strength = clamp(1/(target.global_position - global_position).length(), 0, 1) * DAMAGE * 0.01
+			target.apply_impulse(direction * strength)
+	
+	# Add the limited duration explosion effect..
 	var elapsed = Time.get_ticks_msec() - spawn_time
 	if elapsed > DURATION:
+		print("explosion finished")
 		queue_free()
-	
-	#Damage is dealt now.
-	var targets = get_colliding_bodies()
-	for target in targets:
-		# TODO NOTIFY DAMAGE DEALT
-		print ("damaged target ", target)

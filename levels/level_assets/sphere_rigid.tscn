@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwuc0ubgsmhg0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fd6tv"]
+
+[sub_resource type="GDScript" id="GDScript_gca4u"]
+script/source = "extends RigidBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	pass
+	
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a72jn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_py3xn"]
+
+[node name="SphereScatter" type="RigidBody3D"]
+collision_layer = 7
+collision_mask = 7
+mass = 0.15
+physics_material_override = SubResource("PhysicsMaterial_fd6tv")
+gravity_scale = 0.423
+linear_damp = 0.66
+script = SubResource("GDScript_gca4u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 1.16415e-09, 0, 0, 1, -9.31323e-09, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_a72jn")
+
+[node name="SphereMesh" type="MeshInstance3D" parent="."]
+layers = 3
+mesh = SubResource("SphereMesh_py3xn")

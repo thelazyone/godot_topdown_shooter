@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dcpbumipk4j0n" path="res://units/units_components/mouse_shoot_component.tscn" id="6_bf8cm"]
 [ext_resource type="PackedScene" uid="uid://bqkagvogq0l1r" path="res://units/units_assets/gun_shell.tscn" id="6_q3ike"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vaieb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7l25a"]
+size = Vector3(0.925, 2.02, 0.915)
 
 [node name="Tank" type="CharacterBody3D"]
 axis_lock_linear_y = true
@@ -17,8 +18,8 @@ safe_margin = 0.1
 script = ExtResource("1_k1v7e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-3.93403e-08, -0.9, 0, 0.9, -3.93403e-08, 0, 0, 0, 0.9, 0, 0.245, 0)
-shape = SubResource("CapsuleShape3D_vaieb")
+transform = Transform3D(-3.93403e-08, -0.9, 0, 0.9, -3.93403e-08, 0, 0, 0, 0.9, 0, 0.417142, 0)
+shape = SubResource("BoxShape3D_7l25a")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="CollisionShape3D"]
 radius = 2.0

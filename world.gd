@@ -22,8 +22,6 @@ func _process(delta):
 	pass
 
 func _input(event):
-	
-	
 	# Quit on "Esc"
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()

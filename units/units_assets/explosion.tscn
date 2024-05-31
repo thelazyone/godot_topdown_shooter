@@ -10,14 +10,14 @@ albedo_color = Color(1, 1, 0.266667, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_etswv"]
 material = SubResource("StandardMaterial3D_1ry6s")
 
-[node name="Explosion" type="RigidBody3D"]
-collision_layer = 2
-gravity_scale = 0.0
-freeze = true
+[node name="Explosion" type="Area3D"]
+collision_layer = 0
+collision_mask = 7
 script = ExtResource("1_ue3gw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_c8s0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 7
 mesh = SubResource("SphereMesh_etswv")
