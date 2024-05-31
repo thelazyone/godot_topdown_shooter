@@ -15,7 +15,7 @@ var explosion_position = Vector3(0,0,0)
 func set_target(i_position, i_target, i_deviation):
 	
 	# Velocity direction is calculated on the target.
-	velocity = Vector3(BULLET_SPEED, 0, 0).rotated(Vector3(0,1, 0), -i_position.angle_to_point(i_target))
+	velocity = (i_target - i_position).normalized() * BULLET_SPEED
 	
 	# A box rand deviation, while not uniform, should work just fine.
 	# The correct one would use normal distributions on the 3 dimensions, but it's more expensive 

@@ -13,6 +13,8 @@ var last_click_start = 0 # Loading gun shoot (must hold click a little bit)
 signal aim_order(location)
 signal shoot_main_order(location)
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass 
@@ -29,13 +31,11 @@ func _input(event):
 		mousePos = get_node("/root/World/CameraBase").coords_on_xz(event.position)
 		
 		# TODO for the future an "emit" should be better, but this implies sending
-		# the ABSOLUTE position instead of the relative one
-		# print("debug ", get_parent(), " ", get_parent().position) # TODO TBR DEBUG
+		# the ABSOLUTE position in 3D instead of the relative one
 		aim_order.emit(mousePos - Geometry.space_to_plane(get_parent().position))
 			# If click, there might be a command sent.
 	if event is InputEventMouseButton and event.button_index == 1:
 		
 		# First asking the turret if it's in position:
 		if get_node("../Turret/TurretComponent").is_ready():
-			mousePos = get_node("/root/World/CameraBase").coords_on_xz(event.position)
-			shoot_main_order.emit(mousePos - Geometry.space_to_plane(get_parent().position))
+			shoot_main_order.emit(get_node("/root/World/CameraBase").coords_on_target(event.position))

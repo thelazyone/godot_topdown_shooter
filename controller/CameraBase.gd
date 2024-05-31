@@ -21,11 +21,28 @@ var target_to_follow
 
 func coords_on_xz(screen_position):
 	var z0_plane  = Plane(Vector3(0, 1, 0), 0)
-	var camera_obj = get_node("Camera3D")
+	var camera_obj = get_node("Camera3D") 
 	var coords_3d = z0_plane.intersects_ray(
 							camera_obj.project_ray_origin(screen_position),
 							camera_obj.project_ray_normal(screen_position))
 	return Vector2(coords_3d.x, coords_3d.z)
+
+func coords_on_target(screen_position):
+	const ray_length = 1000
+	var camera_obj = get_node("Camera3D")
+	var from = camera_obj.project_ray_origin(screen_position)
+	var to = from + camera_obj.project_ray_normal(screen_position) * ray_length
+	var space_state = get_world_3d().direct_space_state
+	
+	var params = PhysicsRayQueryParameters3D.new()
+	params.from = from
+	params.to = to
+	params.exclude = []
+	params.collision_mask = 255
+	var result = space_state.intersect_ray(params)
+	print("targeting point: ", result.position)
+	return result.position
+	
 
 # TODO find a nice way to condense these into one method.
 

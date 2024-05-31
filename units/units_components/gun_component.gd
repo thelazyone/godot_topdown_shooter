@@ -17,16 +17,14 @@ func _process(delta):
 	pass
 
 # Coordinates must be 
-func shoot(target):
+func shoot(target_3d):
 	
 	var time_now = Time.get_ticks_msec()
 	print(time_now - last_shot_time)
 	if PROJECTILE and time_now - last_shot_time > COOLDOWN:
 		var new_projectile = PROJECTILE.instantiate()
 		new_projectile.position = global_position
-		print ("setting bullet position to ", new_projectile.position)
-		new_projectile.set_target(Vector2(0,0), target, HIT_DEVIATION)
-		
+		new_projectile.set_target(new_projectile.position, target_3d, HIT_DEVIATION)
 		get_node("/root/World/Actors").add_child(new_projectile)
 		
 		# Updating the shoot time for the cooldown
