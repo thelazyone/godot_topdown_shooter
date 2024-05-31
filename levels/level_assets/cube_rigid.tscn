@@ -1,22 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5obqrpmbl1wa"]
+[gd_scene load_steps=4 format=3 uid="uid://c5obqrpmbl1wa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fd6tv"]
-
-[sub_resource type="GDScript" id="GDScript_gca4u"]
-script/source = "extends RigidBody3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	pass
-	
-"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xabgc"]
 size = Vector3(0.2, 0.2, 0.2)
@@ -31,7 +15,6 @@ mass = 0.05
 physics_material_override = SubResource("PhysicsMaterial_fd6tv")
 gravity_scale = 0.423
 linear_damp = 0.66
-script = SubResource("GDScript_gca4u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 1.16415e-09, 0, 0, 1, -9.31323e-09, 0, 0, 1, 0, 0, 0)
