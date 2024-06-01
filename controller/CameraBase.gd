@@ -97,11 +97,9 @@ func _process(_delta):
 		
 	# Zooming is done when it's not static
 	if camera_mode != CameraMode.Static:
-		print ("hello")
-		# First checking the controls:
+		
 		if Input.is_action_just_released("zoom_in"):	
 			camera_obj.size = max(camera_obj.size - camera_size_step, camera_size_min)
-
 			
 		if Input.is_action_just_released("zoom_out"):
 			camera_obj.size = min(camera_obj.size + camera_size_step, camera_size_max)
