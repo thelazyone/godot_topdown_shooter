@@ -16,6 +16,10 @@ var target_to_follow
 
 @export var SPEED = 2
 @export var MOUSE_LOOK_WEIGHT = .05
+@export var camera_size_default = 10 # unused for now
+@export var camera_size_step = 1
+@export var camera_size_min = 5
+@export var camera_size_max = 15
 
 
 
@@ -90,7 +94,17 @@ func _process(_delta):
 	elif camera_mode == CameraMode.FollowTarget:
 		position = (target_to_follow.position * (1 - MOUSE_LOOK_WEIGHT) + 
 			Geometry.plane_to_space(coords_on_xz(get_viewport().get_mouse_position())) * (MOUSE_LOOK_WEIGHT))
+		
+	# Zooming is done when it's not static
+	if camera_mode != CameraMode.Static:
+		print ("hello")
+		# First checking the controls:
+		if Input.is_action_just_released("zoom_in"):	
+			camera_obj.size = max(camera_obj.size - camera_size_step, camera_size_min)
 
+			
+		if Input.is_action_just_released("zoom_out"):
+			camera_obj.size = min(camera_obj.size + camera_size_step, camera_size_max)
 		
 
 func move(i_vector):
