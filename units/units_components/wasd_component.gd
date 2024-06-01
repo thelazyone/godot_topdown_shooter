@@ -14,6 +14,7 @@ var acceleration = 5
 var speed_max = 3
 var friction = .5 # must be smaller than acceleration
 var steer_restore = 3 #must be smaller than steer_acceleration
+var boost_factor = 2
 
 
 
@@ -29,9 +30,14 @@ func _process(delta):
 	speed = Geometry.space_to_plane(get_parent().velocity).dot(Vector2(cos(plane_direction), sin(plane_direction)))
 	#speed = sign(speed) * Geometry.space_to_plane(get_parent().velocity).length()
 	
+	# If boost, acceleration is temporarly doubled.
+	var boost_multiplier = 1
+	if Input.is_action_pressed("boost"):
+		boost_multiplier = boost_factor
+	
 	# First checking the controls:
 	if Input.is_action_pressed("forward"):
-		speed += acceleration * delta
+		speed += acceleration * delta * boost_multiplier
 		
 	if Input.is_action_pressed("steer_left"):
 		wheels_angle -= steer_acceleration * delta
@@ -44,7 +50,7 @@ func _process(delta):
 		
 	# Clamping values
 	wheels_angle = clamp(wheels_angle, -steer_max, steer_max)
-	speed = clamp(speed, -speed_max, speed_max)
+	speed = clamp(speed, -speed_max, speed_max * boost_multiplier)
 		
 	# Applying a slow brake
 	speed = sign(speed) * max(0, abs(speed) - friction * delta)
