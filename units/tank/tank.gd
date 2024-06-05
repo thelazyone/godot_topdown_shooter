@@ -14,9 +14,14 @@ func _physics_process(delta):
 	# Previously using move_and_slide, but sliding looks very weird on wheeled vehicles
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		# First bounce, then push the target a bit
-		velocity += velocity.bounce(collision.get_normal()) * collision.get_collider().mass
-		collision.get_collider().apply_impulse(-collision.get_normal() * collision.get_collider().mass)
+		
+		if not "mass" in  collision.get_collider():
+			velocity = velocity.bounce(collision.get_normal())  * .5
+			
+		else:
+			# First bounce, then push the target a bit
+			velocity += velocity.bounce(collision.get_normal()) * collision.get_collider().mass
+			collision.get_collider().apply_impulse(-collision.get_normal() * collision.get_collider().mass)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
