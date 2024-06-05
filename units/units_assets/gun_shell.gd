@@ -12,6 +12,8 @@ var shell_offset = Vector2(0, 0)
 var deviation = Vector3(0,0,0)
 var explosion_position = Vector3(0,0,0)
 
+@onready var current_explosion: Area3D = EXPLOSION.instantiate().get_child(0)
+
 func set_target(i_position, i_target, i_deviation):
 	
 	# Velocity direction is calculated on the target.
@@ -21,8 +23,7 @@ func set_target(i_position, i_target, i_deviation):
 	# The correct one would use normal distributions on the 3 dimensions, but it's more expensive 
 	# and doesn't bring extra benefits
 	deviation = Vector3(randf_range(-i_deviation,i_deviation),randf_range(-i_deviation,i_deviation),randf_range(-i_deviation,i_deviation))
-
-
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -53,7 +54,7 @@ func _physics_process(delta):
 	
 
 func explode():
-	var explosion = EXPLOSION.instantiate()
+	var explosion = current_explosion.duplicate()
 	if explosion_position != Vector3(0,0,0):
 		explosion.position = explosion_position
 	else: 

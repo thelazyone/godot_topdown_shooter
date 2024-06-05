@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c12lhyatfs6im"]
+
+[ext_resource type="PackedScene" uid="uid://bqkagvogq0l1r" path="res://units/units_assets/gun_shell.tscn" id="1_se7ob"]
+[ext_resource type="PackedScene" uid="uid://b7vhimyq222jb" path="res://units/units_assets/mg_explosion.tscn" id="2_tsuau"]
+
+[node name="MGShell" type="Node3D"]
+
+[node name="GunShell" parent="." instance=ExtResource("1_se7ob")]
+BULLET_SPEED = 60
+EXPLOSION = ExtResource("2_tsuau")

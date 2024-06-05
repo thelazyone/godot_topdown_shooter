@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8av1vq43x38q"]
+[gd_scene load_steps=13 format=3 uid="uid://c8av1vq43x38q"]
 
 [ext_resource type="Script" path="res://units/tank/tank.gd" id="1_k1v7e"]
 [ext_resource type="ArrayMesh" uid="uid://c5b7f7q4irfiw" path="res://units/tank/tank_body.obj" id="3_1r87h"]
 [ext_resource type="PackedScene" uid="uid://d11vmruo6mjv1" path="res://units/units_components/turret_component.tscn" id="4_3relp"]
 [ext_resource type="ArrayMesh" uid="uid://bljkavj7wwr2s" path="res://units/tank/tank_turret.obj" id="4_25ldr"]
 [ext_resource type="PackedScene" uid="uid://dr8p160sxmysa" path="res://units/units_components/wasd_component.tscn" id="5_mrkqn"]
+[ext_resource type="Script" path="res://units/tank/cannon_component.gd" id="5_o3ha0"]
 [ext_resource type="PackedScene" uid="uid://b267p0cbyaby2" path="res://units/units_components/gun_component.tscn" id="5_q0ual"]
 [ext_resource type="PackedScene" uid="uid://dcpbumipk4j0n" path="res://units/units_components/mouse_shoot_component.tscn" id="6_bf8cm"]
-[ext_resource type="PackedScene" uid="uid://bqkagvogq0l1r" path="res://units/units_assets/gun_shell.tscn" id="6_q3ike"]
+[ext_resource type="PackedScene" uid="uid://dcbmvaquin4x8" path="res://units/units_assets/cannon_shell.tscn" id="7_51o45"]
+[ext_resource type="Script" path="res://units/tank/mg_component.gd" id="8_esuqp"]
+[ext_resource type="PackedScene" uid="uid://c12lhyatfs6im" path="res://units/units_assets/mg_shell.tscn" id="9_yfpk3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7l25a"]
 size = Vector3(0.925, 2.02, 0.915)
@@ -42,9 +45,20 @@ skeleton = NodePath("")
 
 [node name="TurretComponent" parent="Turret" instance=ExtResource("4_3relp")]
 
-[node name="GunComponent" parent="Turret" instance=ExtResource("5_q0ual")]
+[node name="CannonComponent" type="Node3D" parent="Turret"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12777, 0.098838, 0)
-PROJECTILE = ExtResource("6_q3ike")
+script = ExtResource("5_o3ha0")
+
+[node name="GunComponent" parent="Turret/CannonComponent" instance=ExtResource("5_q0ual")]
+PROJECTILE = ExtResource("7_51o45")
+
+[node name="MGComponent" type="Node3D" parent="Turret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11742, 0.101157, 0)
+script = ExtResource("8_esuqp")
+
+[node name="GunComponent" parent="Turret/MGComponent" instance=ExtResource("5_q0ual")]
+PROJECTILE = ExtResource("9_yfpk3")
+COOLDOWN = 5
 
 [node name="WASDComponent" parent="." instance=ExtResource("5_mrkqn")]
 

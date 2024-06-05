@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqkagvogq0l1r"]
+[gd_scene load_steps=5 format=3 uid="uid://bqkagvogq0l1r"]
 
 [ext_resource type="Script" path="res://units/units_assets/gun_shell.gd" id="1_4a04k"]
-[ext_resource type="PackedScene" uid="uid://ci46rdweelrjq" path="res://units/units_assets/explosion.tscn" id="2_57ixj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxo4i"]
 albedo_color = Color(0.580392, 0.686275, 0.690196, 1)
@@ -16,7 +15,6 @@ radius = 0.518125
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_4a04k")
-EXPLOSION = ExtResource("2_57ixj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

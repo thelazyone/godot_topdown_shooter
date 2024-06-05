@@ -47,6 +47,15 @@ func _process(delta):
 		
 	if Input.is_action_pressed("backwards"):
 		speed -= acceleration * delta
+				
+	if Input.is_action_pressed("wpn_1"):
+		get_node("../Turret/CannonComponent").is_active = true
+		get_node("../Turret/MGComponent").is_active = false
+		
+	if Input.is_action_pressed("wpn_2"):
+		get_node("../Turret/CannonComponent").is_active = false
+		get_node("../Turret/MGComponent").is_active = true
+		
 		
 	# Clamping values
 	wheels_angle = clamp(wheels_angle, -steer_max, steer_max)

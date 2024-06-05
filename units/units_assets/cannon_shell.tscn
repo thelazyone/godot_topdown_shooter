@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcbmvaquin4x8"]
+
+[ext_resource type="PackedScene" uid="uid://bqkagvogq0l1r" path="res://units/units_assets/gun_shell.tscn" id="1_k7nsa"]
+[ext_resource type="PackedScene" uid="uid://3ryoko3utm6q" path="res://units/units_assets/cannon_explosion.tscn" id="2_7k7dx"]
+
+[node name="CannonShell" type="Node3D"]
+
+[node name="GunShell" parent="." instance=ExtResource("1_k7nsa")]
+EXPLOSION = ExtResource("2_7k7dx")

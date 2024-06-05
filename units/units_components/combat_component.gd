@@ -1,4 +1,4 @@
-xtends Node3D
+extends Node3D
 
 @export var HIT_DAMAGE = 20
 @export var HIT_DEVIATION = 10

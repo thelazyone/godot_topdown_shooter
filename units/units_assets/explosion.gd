@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var AREA = 5
+@export var AREA = 5.
 @export var DAMAGE = 20
 @export var DURATION = 100
 
@@ -27,3 +27,4 @@ func _physics_process(delta):
 	if elapsed > DURATION:
 		print("explosion finished")
 		queue_free()
+		
