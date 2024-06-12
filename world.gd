@@ -8,7 +8,6 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	
 	# Loading level:
 	var level = preload("res://levels/test_level/test_level.tscn").instantiate()
 	add_child(level)

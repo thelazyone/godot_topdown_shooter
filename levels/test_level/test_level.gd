@@ -13,6 +13,12 @@ func add_cube(coords):
 	cube_node.position = coords
 	add_child(cube_node)
 
+func add_enemy(target, coords):
+	var cube_node = preload("res://npc/enemy/enemy.tscn").instantiate()
+	cube_node.position = coords
+	cube_node.set_target(target)
+	add_child(cube_node)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -31,8 +37,14 @@ func _ready():
 	# Adding Cubes
 	for i in range(10):
 		for j in range(10):
-			add_cube(Vector3(i*.3, 3, j*.3))
+			add_cube(Vector3(0 + i*.3, 1, 3+ j*.3))
 		
+	
+	# Adding Enemies
+	for i in range(4):
+		for j in range(4):
+			add_enemy(tank_node, Vector3(12 + i, 0, 12 + j))
+	
 	# Connecting Buttons to Actors spawner
 	pass
 
