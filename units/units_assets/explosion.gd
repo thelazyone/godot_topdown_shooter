@@ -16,7 +16,7 @@ func _physics_process(delta):
 	
 	var targets = get_overlapping_bodies()
 	for target in targets:
-		if target is RigidBody3D:
+		if target is RigidBody3D or target is CharacterBody3D:
 			print("found target")
 			var direction = (target.global_position - global_position).normalized()
 			var strength = clamp(1/(target.global_position - global_position).length(), 0, 1) * DAMAGE * 0.01

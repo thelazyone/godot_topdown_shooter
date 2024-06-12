@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+# TODO TBR
+func apply_impulse(vector):
+	velocity += vector
+	
 
 var is_selected = false
 

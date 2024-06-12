@@ -14,3 +14,6 @@ func plane_to_space(pos_2d):
 
 func space_to_plane(pos_3d):
 	return Vector2(pos_3d.x, pos_3d.z)
+
+func space_to_space_flat(pos_2d):
+	return Vector3(pos_2d.x, 0, pos_2d.z)
