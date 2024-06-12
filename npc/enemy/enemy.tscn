@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://kvn6l7up6p6c"]
+[gd_scene load_steps=6 format=3 uid="uid://kvn6l7up6p6c"]
 
 [ext_resource type="Script" path="res://npc/enemy/enemy.gd" id="1_d6unm"]
+[ext_resource type="PackedScene" uid="uid://cjjpxgnr62kg" path="res://npc/npc_components/enemy_component.tscn" id="2_o8s6b"]
+[ext_resource type="PackedScene" uid="uid://d4fxlw02b5wdn" path="res://npc/npc_components/health_component.tscn" id="3_todas"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yh8e"]
 
@@ -21,3 +23,7 @@ transform = Transform3D(0.415154, 0, 0, 0, 0.830309, 0, 0, 0, 0.415154, 0, 0, 0)
 mesh = SubResource("BoxMesh_ks32r")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="EnemyComponent" parent="." instance=ExtResource("2_o8s6b")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_todas")]

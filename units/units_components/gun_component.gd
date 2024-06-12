@@ -21,10 +21,8 @@ func _process(delta):
 func shoot(target_3d):
 	
 	var time_now = Time.get_ticks_msec()
-	print(time_now - last_shot_time)
 	if PROJECTILE and time_now - last_shot_time > COOLDOWN:
 		var temp_proj = current_projectile.duplicate()
-		print("projectile speed is", temp_proj.BULLET_SPEED)
 		temp_proj.position = global_position
 		temp_proj.set_target(temp_proj.position, target_3d, HIT_DEVIATION)
 		get_node("/root/World/Actors").add_child(temp_proj)

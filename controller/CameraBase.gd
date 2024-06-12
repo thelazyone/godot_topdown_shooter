@@ -44,7 +44,6 @@ func coords_on_target(screen_position):
 	params.exclude = []
 	params.collision_mask = 255
 	var result = space_state.intersect_ray(params)
-	print("targeting point: ", result.position)
 	return result.position
 	
 
