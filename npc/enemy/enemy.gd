@@ -10,7 +10,7 @@ var target = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+@onready var material = $MeshInstance3D.get_mesh().surface_get_material(0).duplicate()
 
 func set_target(new_target): 
 	target = new_target
@@ -37,3 +37,12 @@ func _process(delta):
 	# Checking if the opponent is within check limit.
 	elif (target.global_transform.origin - global_transform.origin).length() < VIEW_RANGE:
 		$EnemyComponent.enemy_spotted()
+		
+	# Setting the colour based on the health
+	var targetColor = Color(\
+		1.,\
+		$HealthComponent.get_health_perc(), \
+		$HealthComponent.get_health_perc(), \
+		1.)
+	material.albedo_color = targetColor
+	$MeshInstance3D.set_surface_override_material(0, material)

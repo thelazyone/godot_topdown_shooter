@@ -23,8 +23,8 @@ func _physics_process(delta):
 			
 			var health_node = target.get_node_or_null("HealthComponent")
 			if health_node:
-				print("Found HC")
-				health_node.receive_damage(DAMAGE)
+				var range_mod = (target.global_position - global_position).length() / AREA
+				health_node.receive_damage(max(0, (1 - range_mod)) * DAMAGE)
 	
 	# Add the limited duration explosion effect..
 	var elapsed = Time.get_ticks_msec() - spawn_time

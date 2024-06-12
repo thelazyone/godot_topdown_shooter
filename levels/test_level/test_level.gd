@@ -41,9 +41,9 @@ func _ready():
 		
 	
 	# Adding Enemies
-	for i in range(4):
-		for j in range(4):
-			add_enemy(tank_node, Vector3(12 + i, 0, 12 + j))
+	for i in range(5):
+		for j in range(5):
+			add_enemy(tank_node, Vector3(-12 + i, 0, -12 + j))
 	
 	# Connecting Buttons to Actors spawner
 	pass

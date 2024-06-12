@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://kvn6l7up6p6c"]
+[gd_scene load_steps=7 format=3 uid="uid://kvn6l7up6p6c"]
 
 [ext_resource type="Script" path="res://npc/enemy/enemy.gd" id="1_d6unm"]
 [ext_resource type="PackedScene" uid="uid://cjjpxgnr62kg" path="res://npc/npc_components/enemy_component.tscn" id="2_o8s6b"]
@@ -6,7 +6,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yh8e"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crx2f"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_ks32r"]
+material = SubResource("StandardMaterial3D_crx2f")
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519404, 0)
