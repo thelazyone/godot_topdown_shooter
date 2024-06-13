@@ -7,6 +7,12 @@ extends Area3D
 var spawn_time = Time.get_ticks_msec()
 var is_damage_dealt = false
 
+func calculate_damage(range):
+	if AREA > 2:
+		var range_ratio = 2 * range / AREA
+		return max(0, (1 - range_ratio)) * DAMAGE
+	return DAMAGE
+
 func _ready():
 	get_node("CollisionShape3D").scale *= AREA
 	get_node("MeshInstance3D").scale *= AREA
@@ -23,8 +29,7 @@ func _physics_process(delta):
 			
 			var health_node = target.get_node_or_null("HealthComponent")
 			if health_node:
-				var range_mod = (target.global_position - global_position).length() / AREA
-				health_node.receive_damage(max(0, (1 - range_mod)) * DAMAGE)
+				health_node.receive_damage(calculate_damage((target.global_position - global_position).length()))
 	
 	# Add the limited duration explosion effect..
 	var elapsed = Time.get_ticks_msec() - spawn_time
