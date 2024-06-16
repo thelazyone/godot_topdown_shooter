@@ -35,6 +35,7 @@ offset_bottom = 99.0
 script = ExtResource("1_ahvr8")
 
 [node name="Label2" type="Label" parent="MachineGun"]
+layout_mode = 0
 offset_top = 29.0
 offset_right = 85.0
 offset_bottom = 52.0

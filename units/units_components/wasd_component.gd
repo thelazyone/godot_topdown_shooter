@@ -27,11 +27,11 @@ func _ready():
 func _process(delta):
 	# Updating GUI
 	if get_node("../Turret/CannonComponent").is_active:
-		get_node("/root/World/GUI").set_active_weapon(1)
+		GuiUpdates.set_active_weapon(1)
 	elif get_node("../Turret/MGComponent").is_active:
-		get_node("/root/World/GUI").set_active_weapon(2)
+		GuiUpdates.set_active_weapon(2)
 	else:
-		get_node("/root/World/GUI").set_active_weapon(0)
+		GuiUpdates.set_active_weapon(0)
 	
 	# Reading the speed from the real world.
 	speed = Geometry.space_to_plane(get_parent().velocity).dot(Vector2(cos(plane_direction), sin(plane_direction)))
