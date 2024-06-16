@@ -17,3 +17,6 @@ func space_to_plane(pos_3d):
 
 func space_to_space_flat(pos_2d):
 	return Vector3(pos_2d.x, 0, pos_2d.z)
+	
+func plane_angle_from_vector(vec_3d):
+	return Vector3(0, atan2(vec_3d.x,vec_3d.z), 0)

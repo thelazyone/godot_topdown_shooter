@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://d4fxlw02b5wdn" path="res://npc/npc_components/health_component.tscn" id="3_todas"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yh8e"]
+radius = 0.2
+height = 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crx2f"]
 
@@ -12,17 +14,20 @@
 material = SubResource("StandardMaterial3D_crx2f")
 
 [node name="Enemy" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519404, 0)
 collision_layer = 10
 collision_mask = 15
 script = ExtResource("1_d6unm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.635362, 0, 0, 0, 0.635362, 0, 0, 0, 0.635362, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.411078, 0)
 shape = SubResource("CapsuleShape3D_3yh8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.415154, 0, 0, 0, 0.830309, 0, 0, 0, 0.415154, 0, 0, 0)
+transform = Transform3D(5.44409e-08, 0, -0.415154, 0, 0.830309, 0, 0.415154, 0, 5.44409e-08, 0.00289533, 0.421104, 0.00203821)
+mesh = SubResource("BoxMesh_ks32r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.44409e-08, 0, -0.0588426, 0, 0.086459, 0, 0.415154, 0, 7.71628e-09, -0.152433, 0.740642, 0.238513)
 mesh = SubResource("BoxMesh_ks32r")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

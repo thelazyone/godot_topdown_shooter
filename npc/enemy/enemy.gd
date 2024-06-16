@@ -32,6 +32,7 @@ func _process(delta):
 		var next_nav_point = nav_agent.get_next_path_position()
 		velocity *= INERTIA
 		velocity += (1 - INERTIA) * (next_nav_point - global_transform.origin).normalized() * SPEED
+		rotation = Geometry.plane_angle_from_vector(velocity)
 		move_and_slide()
 	
 	# Checking if the opponent is within check limit.
