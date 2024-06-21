@@ -14,3 +14,5 @@ script = ExtResource("1_88v0v")
 
 [node name="GUI" parent="." instance=ExtResource("4_ql4e8")]
 unique_name_in_owner = true
+
+[node name="NPCFactory" type="Node3D" parent="."]

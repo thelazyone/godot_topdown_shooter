@@ -23,11 +23,3 @@ func _process(_delta):
 
 # All Commands go through this node, because it is the only one to have a list
 # of All the actors. 
-
-
-
-
-
-
-
-

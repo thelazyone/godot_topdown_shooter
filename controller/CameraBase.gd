@@ -106,4 +106,3 @@ func _process(_delta):
 
 func move(i_vector):
 	position += i_vector
-
