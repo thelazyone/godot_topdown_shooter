@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://cxdkats1domyj"
+path="res://.godot/imported/test_level.exr-c43cdd06e0d7ac5a9b0720e33dfc4780.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://levels/test_level/test_level.exr"
+dest_files=["res://.godot/imported/test_level.exr-c43cdd06e0d7ac5a9b0720e33dfc4780.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=4
