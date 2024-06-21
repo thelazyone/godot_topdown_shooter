@@ -1,21 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl2kxwojbmqcv"]
+[gd_scene load_steps=5 format=3 uid="uid://bl2kxwojbmqcv"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_88v0v"]
 [ext_resource type="PackedScene" uid="uid://50ws8mipweoo" path="res://controller/camera_base.tscn" id="2_a3pic"]
 [ext_resource type="PackedScene" uid="uid://7ubpqhxlnvxl" path="res://levels/level_components/actors.tscn" id="3_g02d5"]
 [ext_resource type="PackedScene" uid="uid://gupikli04gci" path="res://gui/gui.tscn" id="4_ql4e8"]
-
-[sub_resource type="Environment" id="Environment_d6376"]
-ssao_enabled = true
-ssao_radius = 0.84
-ssao_intensity = 16.0
-ssao_light_affect = 0.44
-ssao_ao_channel_affect = 0.39
-sdfgi_use_occlusion = true
-sdfgi_bounce_feedback = 1.01
-sdfgi_min_cell_size = 0.01
-sdfgi_cascade0_distance = 0.64
-sdfgi_max_distance = 10.24
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_88v0v")
@@ -28,6 +16,3 @@ script = ExtResource("1_88v0v")
 unique_name_in_owner = true
 
 [node name="NPCFactory" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_d6376")
